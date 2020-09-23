@@ -300,11 +300,11 @@ void ShaderIndex::encodeShadersToIndices() {
         offset += sizeof(uint32_t);
 
         const char* s = record.decodedShaderText.c_str();
-        size_t length = record.decodedShaderText.length();
-        for (size_t cur = 0; s[cur] != '\0'; cur++) {
+        const size_t length = record.decodedShaderText.length();
+        for (size_t cur = 0; cur < length; cur++) {
             size_t pos = cur;
             size_t len = 0;
-            while (s[cur] != '\n') {
+            while (s[cur] != '\n' && s[cur] != '\0') {
                 cur++;
                 len++;
             }
